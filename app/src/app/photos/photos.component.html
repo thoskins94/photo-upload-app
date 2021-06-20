@@ -1,0 +1,20 @@
+<div style="text-align:center">
+        <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+        <div><img [src]="url" *ngIf="url"></div>
+        <div>
+            <input #myInput type="file" (change)="selectFile($event)">
+        </div>
+        <div class="upload-div" *ngIf="imageValid">
+            <button type="button" class="btn btn-sm btn-default" (click)="upload()">Upload</button>
+            <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">Clear Image</button>
+        </div>
+</div>
+
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let photo of userPhotos">
+        <div class="container">
+            <button type="button" (click)="deleteImage(photo._id)" class="btn btn-sm-btn-default">Delete Image</button>
+            <img src="{{baseUrl}}/{{photo.fileName}}" alt="testImage" layout-fill/>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

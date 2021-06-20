@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onRegister()">
+            <h2>Register</h2>
+            <mat-error *ngIf="registerInvalid">
+                The form was filled out incorrectly
+            </mat-error>
+            <mat-form-field class="full-width-input">
+                <input matInput placeholder="First Name" formControlName="firstName">
+                <mat-error>
+                    Please provide a valid first name
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Last Name" formControlName="lastName">
+                    <mat-error>
+                        Please provide a valid last name
+                    </mat-error>
+                </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <input matInput type="email" placeholder="Email" formControlName="email" required>
+                <mat-error>
+                    Please provide a valid password
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <input matInput type="password" placeholder="Password" formControlName="password" required>
+                <mat-error>
+                    Please provide a valid password
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary">Register</button>
+            <button (click)="navigateToLogin()" mat-raised-button color="secondary">Back</button>
+        </form>
+    </mat-card-content>
+</mat-card>
