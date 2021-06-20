@@ -17,18 +17,11 @@ export class PhotoService {
   }
 
   async delete(id: string){
-    return await this.http.delete('http://localhost:3000/api/photo/delete/'+ id).toPromise().then((data:any) => {
-      console.log(data)
-      if(data){
-        return true;
-      }
-      return false;
-    });
+    return await this.http.delete('http://localhost:3000/api/photo/delete/'+ id).toPromise().then((data:any) => {});
   }
 
   async getByUser(userId: string) {
     return await this.http.get('http://localhost:3000/api/photo/user/' + userId).toPromise().then((data:any) => {
-      console.log(data);
       return data;
     })
   }
