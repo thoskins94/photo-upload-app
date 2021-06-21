@@ -57,10 +57,8 @@ export class AuthService {
       return this.http.get<void>('http://localhost:3000/auth/logout');
   }
 
-  private loggedIn = new BehaviorSubject<boolean>(false);
-
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
+  isLoggedIn() {
+    return localStorage.getItem("ACCESS_TOKEN") == null ? false : true;
   }
 }
 

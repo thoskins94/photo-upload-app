@@ -25,6 +25,9 @@ export class LoginComponent implements OnInit {
       });
     }
   async ngOnInit(): Promise<void> {
+    if(this.authService.isLoggedIn()) {
+      this.router.navigateByUrl(localStorage.getItem("USER_ID") + '/photos');
+    }
   }
 
   navigateToRegister = () => {
