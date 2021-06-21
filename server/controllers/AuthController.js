@@ -29,6 +29,8 @@ module.exports = {
             user.access_token = jwt.sign({ id: user.id}, config.secret, { expiresIn: 86400 });
             var date = new Date();
             user.expireIn = date.setDate(date.getDate() + 1);
+            user.update(user);
+            user.password = ''
             res.status(200).send({auth: true, user: user });
         });
     },
@@ -51,6 +53,7 @@ module.exports = {
             let date = new Date();
             user.expireIn = date.setDate(date.getDate()+1);
             user.update(user);
+            user.password = ''
             res.status(200).send({ auth: true, user: user});
         });
     },
