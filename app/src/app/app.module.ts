@@ -32,7 +32,7 @@ import { AuthInterceptor } from './auth/auth-interceptor.service';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PhotosComponent
+    PhotosComponent,
   ],
   imports: [
     BrowserModule,

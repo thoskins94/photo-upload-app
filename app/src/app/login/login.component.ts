@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   public loginInvalid = false;
   private formSubmitAttempt = false;
-  private returnUrl: string;
 
   constructor(   
     private fb: FormBuilder,
@@ -20,17 +19,12 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService) { 
       
-      this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/photos';
-
       this.form = this.fb.group({
         email: ['', Validators.required],
         password: ['', Validators.required]
       });
     }
   async ngOnInit(): Promise<void> {
-    // if (await this.authService.checkAuthenticated()) {
-    //   await this.router.navigate([this.returnUrl]);
-    // }
   }
 
   navigateToRegister = () => {

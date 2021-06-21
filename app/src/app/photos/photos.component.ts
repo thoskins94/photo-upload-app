@@ -68,13 +68,7 @@ export class PhotosComponent implements OnInit {
   }
 
   deleteImage = async(id: string) => {
-    var fileDeleted = await this.photoService.delete(id);
-    this.userPhotos.forEach( (item, index) => {
-      console.log(item._id)
-      if(item._id === id) {
-        this.userPhotos.splice(index,1);
-      }
-    });
+    await this.photoService.delete(id);
     await this.getByUser()
   }
 

@@ -17,8 +17,8 @@ export interface AuthObject {
   providedIn: 'root'
 })
 export class AuthService {
-  options: any
-  authObject: any
+  options: any;
+  authObject: any;
   constructor(private http: HttpClient, private router: Router) {
     this.options = {
       'headers' : {
@@ -42,7 +42,7 @@ export class AuthService {
 
   register(user: User) {
     return this.http.post('http://localhost:3000/api/auth/register', user, this.options).toPromise().then((data:any) => {
-      localStorage.setItem('ACCESS_TOKEN', data.user.token);
+      localStorage.setItem('ACCESS_TOKEN', data.user.access_token);
       localStorage.setItem('EXPIRES_IN', data.user.expiresIn);
       localStorage.setItem('user', data.user);
       this.router.navigateByUrl(data.user._id + '/photos')
@@ -56,8 +56,10 @@ export class AuthService {
       return this.http.get<void>('http://localhost:3000/auth/logout');
   }
 
-  isAuthenticated() {
-    return this.authObject.asObservable()
+  private loggedIn = new BehaviorSubject<boolean>(false); // {1}
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable(); // {2}
   }
 }
 
