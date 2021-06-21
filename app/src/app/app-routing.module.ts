@@ -16,6 +16,11 @@ const routes: Routes = [
   {
     path: ':id/photos',
     component: PhotosComponent
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'prefix'
   }
 ];
 

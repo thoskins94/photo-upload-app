@@ -22,7 +22,7 @@ var storage = multer.diskStorage({
 router.get("/", photoController.all);
 
 // create a photo
-router.post("/upload", upload.single('image'), photoController.upload);
+router.post("/upload",authHelpers.VerifyToken, upload.single('image'), photoController.upload);
 
 // delete a photo
 router.delete("/delete/:id", authHelpers.VerifyToken, photoController.remove);

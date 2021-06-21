@@ -34,7 +34,7 @@ export class AuthService {
       {
         localStorage.setItem('ACCESS_TOKEN', data.user.access_token);
         localStorage.setItem('EXPIRES_IN', data.user.expiresIn);
-        localStorage.setItem('user', data.user);
+        localStorage.setItem('USER_ID', data.user._id);
         this.router.navigateByUrl(data.user._id + '/photos') 
       }
     })
@@ -44,7 +44,7 @@ export class AuthService {
     return this.http.post('http://localhost:3000/api/auth/register', user, this.options).toPromise().then((data:any) => {
       localStorage.setItem('ACCESS_TOKEN', data.user.access_token);
       localStorage.setItem('EXPIRES_IN', data.user.expiresIn);
-      localStorage.setItem('user', data.user);
+      localStorage.setItem('USER_ID', data.user._id);
       this.router.navigateByUrl(data.user._id + '/photos')
     })
   }
@@ -52,14 +52,15 @@ export class AuthService {
   logout(): Observable<void> {
       localStorage.removeItem('ACCESS_TOKEN');
       localStorage.removeItem('EXPIRES_IN');
-      this.router.navigateByUrl('/login')
+      localStorage.removeIte,("USER_ID");
+      this.router.navigateByUrl('/login');
       return this.http.get<void>('http://localhost:3000/auth/logout');
   }
 
-  private loggedIn = new BehaviorSubject<boolean>(false); // {1}
+  private loggedIn = new BehaviorSubject<boolean>(false);
 
   get isLoggedIn() {
-    return this.loggedIn.asObservable(); // {2}
+    return this.loggedIn.asObservable();
   }
 }
 
