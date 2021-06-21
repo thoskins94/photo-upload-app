@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Photo, ListPhoto } from '../photos/photo';
 import { PhotoService } from '../photos/photo.service';
+import { NavbarService } from '../navbar/navbar.service';
 
 @Component({
   selector: 'app-photos',
@@ -23,7 +24,7 @@ export class PhotosComponent implements OnInit {
   imagePath = "";
 
 
-  constructor(private route: ActivatedRoute, private photoService: PhotoService) {
+  constructor(private route: ActivatedRoute, private photoService: PhotoService, public nav: NavbarService) {
     this.route.params.subscribe(params => {
       this.id = params.id 
     })
@@ -96,5 +97,6 @@ export class PhotosComponent implements OnInit {
       this.id = params['id'];
     })
     this.getByUser();
+    this.nav.show()
   }
 }

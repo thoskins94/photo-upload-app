@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import AuthService from '../auth/auth.service'
+import { NavbarService } from '../navbar/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService) { 
+    private authService: AuthService,
+    public nav: NavbarService) { 
       
       this.form = this.fb.group({
         email: ['', Validators.required],
@@ -27,7 +29,8 @@ export class LoginComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     if(this.authService.isLoggedIn()) {
       this.router.navigateByUrl(localStorage.getItem("USER_ID") + '/photos');
-    }
+    } 
+    this.nav.hide()
   }
 
   navigateToRegister = () => {

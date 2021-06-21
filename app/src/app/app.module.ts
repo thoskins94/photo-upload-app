@@ -26,6 +26,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RegisterComponent } from './register/register.component';
 import { PhotosComponent } from './photos/photos.component';
 import { AuthInterceptor } from './auth/auth-interceptor.service';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AuthInterceptor } from './auth/auth-interceptor.service';
     LoginComponent,
     RegisterComponent,
     PhotosComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

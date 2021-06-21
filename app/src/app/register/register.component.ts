@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import AuthService from '../auth/auth.service'
 import { User } from '../auth/user';
+import { NavbarService } from '../navbar/navbar.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,8 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService) { 
+    private authService: AuthService,
+    public nav:NavbarService) { 
       
       this.form = this.fb.group({
         firstName: [''],
@@ -29,7 +31,9 @@ export class RegisterComponent implements OnInit {
       });
     }
 
-    async ngOnInit(): Promise<void> {}
+    async ngOnInit(): Promise<void> {
+      this.nav.hide()
+    }
 
     navigateToLogin = () => {
       this.router.navigateByUrl('/login')
