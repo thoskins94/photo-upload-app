@@ -8,5 +8,9 @@ export interface ListPhoto {
     data: string,
     contentType: string,
     fileName: string,
-    _id: string
+    _id: string,
+    img:{
+        data: string,
+        contentType:string,
+    }
 }

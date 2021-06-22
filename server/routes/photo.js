@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const photoController = require("../controllers/PhotoController");
 const authHelpers = require("../helpers/authHelpers");
-var multer = require('multer');
+const multer = require('multer');
+const base64Image = require('base64-img');
 const path = require('path');
 
-var storage = multer.diskStorage({
+let storage = multer.diskStorage({
     destination: (req, file, cb) => {
         let reqPath = path.join(__dirname, '../');
         cb(null, reqPath + 'uploads/')

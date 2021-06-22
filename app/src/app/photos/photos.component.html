@@ -14,7 +14,7 @@
     <mat-grid-tile *ngFor="let photo of userPhotos">
         <div class="container">
             <button type="button" (click)="deleteImage(photo._id)" class="btn btn-sm-btn-default">Delete Image</button>
-            <img src="{{baseUrl}}/{{photo.fileName}}" alt="testImage" layout-fill/>
+            <img src="{{baseUrl}}/{{photo.fileName}}" alt="photo.fileName" layout-fill/>
         </div>
     </mat-grid-tile>
 </mat-grid-list>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Photo } from '../photos/photo';
 import { HttpClient } from '@angular/common/http';
-
+  
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +22,8 @@ export class PhotoService {
 
   async getByUser(userId: string) {
     return await this.http.get('http://localhost:3000/api/photo/user/' + userId).toPromise().then((data:any) => {
-      return data;
+    console.log(data)  
+    return data;
     })
   }
 }

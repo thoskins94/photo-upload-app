@@ -6,12 +6,13 @@ module.exports = {
     
     upload: async (req, res) => {
         try {
+            console.log(req.file)
             let reqPath = path.join(__dirname, '../');
             let img = {
-                name: req.body.name,
+                name: req.body.fileName,
                 desc: req.body.desc,
                 img: {
-                    data: await fs.readFileSync(path.join(reqPath, 'uploads/' , req.file.filename)),
+                    data: fs.readFileSync(path.join(reqPath, 'uploads/' + req.file.filename),''),
                     contentType: 'image/png'
                 },
                 user: req.body.userId,
@@ -47,6 +48,9 @@ module.exports = {
 
     getByUser: async(req, res) => {
         let photos = await PhotoModel.find({ user: req.userId });
+        photos.forEach(photo => {
+            photo.img.data = photo.img.data.toString('base64');
+        })
         await res.json(photos);
     }
  }
