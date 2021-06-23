@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PhotosComponent } from './photos/photos.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: ':id/photos',
-    component: PhotosComponent
+    component: PhotosComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',

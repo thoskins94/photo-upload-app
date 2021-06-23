@@ -19,12 +19,14 @@ export interface AuthObject {
 export class AuthService {
   options: any;
   authObject: any;
+  loggedIn: boolean;
   constructor(private http: HttpClient, private router: Router) {
     this.options = {
       'headers' : {
         'accept': 'application/json'
       }
     }
+    this.loggedIn = false;
     this.authObject = new BehaviorSubject(false)
   }
 
@@ -58,7 +60,8 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return localStorage.getItem("ACCESS_TOKEN") == null ? false : true;
+    this.loggedIn = localStorage.getItem("ACCESS_TOKEN") == null ? false : true;
+    return this.loggedIn;
   }
 }
 

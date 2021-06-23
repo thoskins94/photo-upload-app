@@ -22,7 +22,6 @@ export class PhotoService {
 
   async getByUser(userId: string) {
     return await this.http.get('http://localhost:3000/api/photo/user/' + userId).toPromise().then((data:any) => {
-    console.log(data)  
     return data;
     })
   }
