@@ -1,4 +1,5 @@
-var User = require('./models/user');
+const User = require('./models/user');
+const Photo = require('./models/photo')
 const mongoose = require('mongoose');
 const dbConfig = require('./config/database.config')
 
@@ -13,13 +14,7 @@ mongoose.connect(dbConfig.url, {
    process.exit;
 })
 
-User.create({
-   firstName: "Jon",
-   lastName: "Doe",
-   email: "photo-upload@testemail.com",
-   password: "testing",
-}, function() {
-   console.log("Test User Added!")
-}) 
-mongoose.connection.close();
+User.remove({});
+Photo.remove({});
+
 console.log("Seed Script Complete!");
