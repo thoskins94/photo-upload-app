@@ -9,12 +9,12 @@ mongoose.connect(dbConfig.url, {
    useCreateIndex: true
 }).then(() => {
    console.log("Successfully Connected to Database");
+   User.deleteMany();
+   Photo.deleteMany();
 }).catch((error) => {
    console.log("Could not connect to the database. Exiting now...");
    process.exit;
 })
 
-User.remove({});
-Photo.remove({});
 
 console.log("Seed Script Complete!");
