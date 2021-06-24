@@ -37,6 +37,7 @@ export class AuthService {
         localStorage.setItem('ACCESS_TOKEN', data.user.access_token);
         localStorage.setItem('EXPIRES_IN', data.user.expiresIn);
         localStorage.setItem('USER_ID', data.user._id);
+        this.loggedIn = true;
         this.router.navigateByUrl(data.user._id + '/photos') 
       }
     })
@@ -47,6 +48,7 @@ export class AuthService {
       localStorage.setItem('ACCESS_TOKEN', data.user.access_token);
       localStorage.setItem('EXPIRES_IN', data.user.expiresIn);
       localStorage.setItem('USER_ID', data.user._id);
+      this.loggedIn = true;
       this.router.navigateByUrl(data.user._id + '/photos')
     })
   }
@@ -54,7 +56,8 @@ export class AuthService {
   logout(): Observable<void> {
       localStorage.removeItem('ACCESS_TOKEN');
       localStorage.removeItem('EXPIRES_IN');
-      localStorage.removeIte,("USER_ID");
+      localStorage.removeItem("USER_ID");
+      this.loggedIn = false;
       this.router.navigateByUrl('/login');
       return this.http.get<void>('http://localhost:3000/auth/logout');
   }

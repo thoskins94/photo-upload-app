@@ -23,7 +23,12 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'prefix'
-  }
+  },
+  {
+    path: '**',
+    redirectTo: 'login',
+  },
+
 ];
 
 @NgModule({
